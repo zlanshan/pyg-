@@ -1,0 +1,101 @@
+@import 'common.less';
+
+html,body {
+    height:100%;
+}
+
+body{
+    position: relative;
+    padding-top:45px;
+    padding-bottom: 45px;
+}
+.pyg_header{
+position: absolute;
+top:0;
+left:0;
+width:100%;
+height:45px;
+padding:5px;
+background: #fff;
+input[type='search']{
+    // border:2px solid @bgColor;
+    box-shadow: 0 0 10px 0px @bgColor;
+}
+}
+
+.pyg_footer{
+    background: #fff;
+    position:fixed;
+    left:0;
+    bottom:0;
+    display:flex;
+    justify-content:space-around;
+    width:100%;
+    height:45px;
+   
+    text-align:center;
+    a{
+        flex:1;
+        color:@bgColor;
+    }
+}
+
+
+.pyg_view{
+    height: 100%;
+  overflow: scroll;
+    // padding:5px;
+    .pyg_nav{
+        margin-top:10px;
+        display: flex;
+        a{
+           flex: 1;
+           img{
+               width:100%;
+           }
+        }
+    }
+    .pyg_goods_list{
+        padding:10px;
+        .pyg_item{
+          .pyg_item_title{
+            margin: 5px 0;
+          } 
+          .pyg_item_content{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li{
+                width:49%;
+                padding:5px;
+                background-color: #fff;
+                margin-bottom: 5px;
+                img{
+                    width:80%;
+                    margin:0 auto;
+                }
+                .goods_name{
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    word-break: break-all;
+                    padding:5px;
+                }
+                .goods_price{
+                    color:red;
+                    margin-bottom:5px;
+                }
+                .pyg_goods_like{                      
+                    display: block;
+                    width:80%;
+                    margin:0 auto;
+                }
+                }
+            }
+        }
+    }
+}

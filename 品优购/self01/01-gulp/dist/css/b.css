@@ -1,0 +1,15 @@
+div {
+  background: red;
+  font-size: 20px;
+  -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+}
+span {
+  color: blue;
+  font-size: 12px;
+  display: block;
+  width: 300px;
+  height: 300px;
+}
+
+/*# sourceMappingURL=b.css.map */

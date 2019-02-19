@@ -1,0 +1,12 @@
+{
+    // presets 预先设置
+    "presets":[[
+        // @babel/preset-env 里面已经集成了现在主流的配置 (es6 转成es5)
+        "@babel/preset-env",{
+            "targets":{
+                // targets 目标  browsers  对现在两个内的浏览器也添加一些兼容处理 
+                "browsers": ["last 2 years"]
+            }
+        }
+    ]]
+}

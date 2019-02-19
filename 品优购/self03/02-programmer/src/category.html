@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分类页面</title>
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <link rel="stylesheet" href="./css/category.css">
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css">
+</head>
+<script>
+    setHtml();
+    // 根屏幕的宽度 设置 根标签的字体大小 
+    //  屏幕宽度/根标签的字体大小=设计稿的宽度/基础值
+    function setHtml() {
+        // 基础值
+        var baseVal = 100;
+        // 设计稿的宽度
+        var pageWidth = 375;
+        // 要适配的屏幕的宽度
+        // document.querySelector('html').offsetWidth获取html的宽度
+        var screenWidth = document.querySelector('html').offsetWidth;
+
+        var fontsize = screenWidth * baseVal / pageWidth;
+        document.querySelector('html').style.fontSize = fontsize + 'px';
+    }
+</script>
+
+<body>
+    <!-- 头部搜索框 -->
+    @@include('header.html')
+
+    <div class="pyg_view">
+        <div class="pyg_view_left">
+
+        </div>
+        <div class="pyg_view_right">
+
+        </div>
+    </div>
+    </div>
+
+
+
+    @@include("footer.html",{"index":1})
+</body>
+
+</html>
+<!-- 模板引擎 -->
+<script type='text/html' id='viewLeft'>
+    <ul>
+        {{each data item index}}
+        <li class="{{index==0?'active':''}}">{{item.cat_name}}</li>
+        {{/each}}
+    </ul>
+</script>
+
+<script type='text/html' id='viewRight'>
+    <div>
+        {{each data item index}}
+        <div class="right_item">
+            <div class="right_title">
+                {{item.cat_name}}
+            </div>
+            <div class="right_content">
+                {{each item.children item2 index2}}
+                <a href="javascript:;">
+                    <img src="http://api.pyg.ak48.xyz/{{item2.cat_icon}}" alt="">
+                    <div class='title_small'>{{item2.cat_name}}</div>
+                </a>
+                {{/each}}
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+</script>
+
+
+
+
+
+<!-- 这个引入有先后关系的，，最好mui在最前面的 -->
+<script src="./lib/mui/js/mui.js"></script>
+<script src='./lib/arttemplate/template-web.js'></script>
+<script src='./lib/iscroll/iscroll.js'></script>
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src='./js/category.js'></script>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+
+    <title>品优购</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css
+    ">
+</head>
+
+<body>
+    <!-- 头部搜索框 -->
+    @@include('header.html');
+
+    <div class="pyg_view">
+        <!-- 轮播图 -->
+        <div class="pyg_slide">
+
+        </div>
+        <!-- 导航栏 -->
+        <div class="pyg_nav">
+
+        </div>
+        <!-- 商品列表 -->
+        <div class="pyg_goods_list">
+
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <!-- @@include('footer.html',{'index':0}) -->
+    @@include("footer.html",{"index":0})
+    <!-- 单引号与双引号在此有关系吗 有的，，单引号后面修改的时候不能立马呈现，，双引号可以-->
+</body>
+
+</html>
+<!-- 轮播图 -->
+<script type='text/html' id='slideTp'>
+    <div class="mui-slider">
+        <div class="mui-slider-group mui-slider-loop">
+            <!--支持循环，需要重复图片节点-->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+                <a href="#"><img src="{{data[data.length-1].image_src}}" /></a>
+            </div>
+            {{each data item index}}
+            <div class="mui-slider-item">
+                <a href="#"><img src="{{item.image_src}}" /></a>
+            </div>
+            {{/each}}
+            <!--支持循环，需要重复图片节点-->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+                <a href="#"><img src="{{data[0].image_src}}" /></a>
+            </div>
+        </div>
+        <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+            <!-- <div class="mui-indicator"></div> -->
+        </div>
+    </div>
+</script>
+<!-- 导航 -->
+<script type='text/html' id='navTp'>
+    {{each data value index}}
+    <a href="javascript:;"><img src="{{value.image_src}}" alt=""></a>
+    {{/each}}
+</script>
+<!-- 商品列表 -->
+<script type='text/html' id='goodsTp'>
+    {{each data item index}}
+    <div class="pyg_item">
+
+        <div class="pyg_item_title">
+            <a href="javascript:;"><img src="{{item.group_img}}" alt=""></a>
+        </div>
+        <ul class="pyg_item_content">
+            {{each item.goods item2 index}}
+            <li>
+                <a href="javascript:;">
+                    <img src="{{item2.goods_small_logo}}" alt="">
+                    <div class='goods_name'>{{item2.goods_name}}</div>
+                    <div class='goods_price'>￥ {{item2.goods_price}} </div>
+                </a>
+                <!-- <button type="button" class="">蓝色</button> -->
+                <a class='pyg_goods_like mui-btn mui-btn-primary mui-btn-outlined' href="javascript:;">找相似</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    {{/each}}
+</script>
+<!-- 这个引入有先后关系的，，最好mui在最前面的 -->
+<script src="./lib/mui/js/mui.js"></script>
+<script src='./lib/arttemplate/template-web.js'></script>
+<!-- <script src="./lib/arttemplate/template-web.js"></script> -->
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/index.js"></script>

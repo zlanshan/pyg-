@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <!-- @@与其file-include.js中的prefix的属性值一致
+    header.html---为文件名称 -->
+    <!-- @@include('header.html') -->
+
+    <!-- {"page":"index"}??? -->
+    @@include('header.html'，{"page":"index"})
+
+    <div>哈哈</div>
+    <h2>页面1</h2>
+</body>
+<script src='./js/index.js'></script>
+
+</html>
