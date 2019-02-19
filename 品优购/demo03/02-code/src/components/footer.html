@@ -1,0 +1,20 @@
+
+<!-- 不要加两个 @ 符号 否则 gulp插件会出问题  -->
+<footer class="pyg_footer">
+  <a href="index.html" @@if(context.index == 0 ){class='active'} >
+    <i class="fa fa-home"></i>
+    <div class="page_name">首页 </div>
+  </a>
+  <a href="category.html" @@if(context.index == 1 ){class='active'} >
+    <i class="fa fa-list-ul" ></i>
+    <div class="page_name">分类</div>  
+  </a>
+  <a href="javascript:;"  @@if(context.index == 2 ){class='active'}>
+    <i class="fa fa-cart-plus"></i>
+    <div class="page_name">购物车</div>
+  </a>
+  <a href="javascript:;"  @@if(context.index == 3 ){class='active'}>
+    <i class="fa fa-user"></i>
+    <div class="page_name">我的</div>
+  </a>
+</footer>

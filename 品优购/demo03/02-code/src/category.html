@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>27-分类页面</title>
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css">
+  <link rel="stylesheet" href="./css/category.css">
+  <script>
+      setHTML();
+        // 根屏幕的宽度 设置 根标签的字体大小 
+  function setHTML() {
+    // 基础值
+    var baseVal = 100;
+    // 设计稿的宽度
+    var pageWidth = 375;
+    // 要适配的屏幕的宽度?
+    var screenWidth = document.querySelector("html").offsetWidth;
+    // 要设置的fontsize
+    var fontsize = screenWidth * baseVal / pageWidth;
+    // 设置到html标签的中
+    document.querySelector("html").style.fontSize = fontsize + "px";
+  }
+  </script>
+</head>
+<body>
+  @@include("header.html")
+  <div class="pyg_view">
+    <!-- 左侧菜单 -->
+    <div class="left_menu">
+      <ul class="left_wrap">
+
+      </ul>
+    </div>
+    <!-- 右侧内容 -->
+    <div class="right_content">
+       
+    </div>
+  </div>
+  @@include("footer.html",{"index":1})
+</body>
+
+<!-- 模板引擎 开始 -->
+<!-- 左侧菜单 开始 -->
+<script type="text/html" id="leftTpl">
+  {{each arr item1 index1}}
+  <li class="{{index1==0?'active':''}}">{{item1.cat_name}}</li>
+  {{/each}}
+</script>
+<!-- 左侧菜单 结束 -->
+
+<!-- 右侧内容 开始 -->
+<script type="text/html" id="rightTpl" >
+  <div>
+  {{each arr item2 index2}}
+  <div class="goods_item">
+      <!-- 标题 -->
+      <div class="goods_title">{{item2.cat_name}}</div>
+      <!-- 电视下面 小电视品牌 -->
+      <div class="goods_sm_list">
+         {{each item2.children item3 index3 }}
+         <a class="brand_item" href="javascript:;">
+            <img src="http://api.pyg.ak48.xyz/{{item3.cat_icon}}" alt="">
+            <div class="brand_name">{{item3.cat_name}}</div>
+          </a>
+         {{/each}}
+      </div>
+    </div>
+  {{/each}}
+</div>
+</script>
+<!-- 右侧内容 结束 -->
+<!-- 模板引擎 结束 -->
+
+<script src="./lib/mui/js/mui.js"></script>
+<script src="./lib/arttemplate/template-web.js"></script>
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./lib/iscroll/iscroll.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/category.js"></script>
+</html>

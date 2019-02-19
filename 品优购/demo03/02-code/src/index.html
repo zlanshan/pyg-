@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <title>27-品优购</title>
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <!-- 公共 头部搜索 开始 -->
+  @@include("header.html")
+  <!-- 公共 头部搜索 结束-->
+  <div class="pyg_view">
+   <!-- 轮播图 开始 -->
+   <div class="pyg_swiper">
+   </div>
+   <!-- 轮播图 结束 -->
+
+   <!-- 首页导航 开始 -->
+   <div class="pyg_nav">
+     <!-- <a href="javascript:;"> <img src="" alt=""> </a> -->
+   </div>
+   <!-- 首页导航 结束 -->
+   
+   <!-- 商品列表 开始 -->
+   <div class="pyg_goods_list">
+     
+   </div>
+   <!-- 商品列表 结束 -->
+  </div>
+<!-- 公共尾部导航 开始 -->
+<!-- 传递参数 -->
+  @@include("footer.html",{"index":0})
+<!-- 公共尾部导航 结束 -->
+</body>  
+
+<!-- 模板引擎 -->
+<!-- 轮播图的模板 开始 -->
+<script type="text/html" id="swiperTpl">
+  <div class="mui-slider">
+      <!-- 图片 -->
+      <div class="mui-slider-group mui-slider-loop">
+        <!--支持循环，需要重复图片节点-->
+        <!-- 这个图片要是 被循环的数组 的最后一张  -->
+        <div class="mui-slider-item mui-slider-item-duplicate">
+          <a href="#"><img src="{{arr[arr.length-1].image_src}}" /></a>
+        </div>
+        {{each arr  item index }}
+        <div class="mui-slider-item"><a href="#"><img src="{{item.image_src}}" /></a></div>
+        {{/each}}
+        <!--支持循环，需要重复图片节点-->
+        <!-- 被循环的数组 第0张  -->
+        <div class="mui-slider-item mui-slider-item-duplicate">
+          <a href="#"><img src="{{arr[0].image_src}}" /></a>
+        </div>
+      </div>
+      <!-- 索引器 -->
+      <div class="mui-slider-indicator">
+        <!-- 默认 只有第 0个 才有 mui-active -->
+          {{each arr  item index }}
+          <div class="mui-indicator {{index===0?'mui-active':''}} "></div>  
+          {{/each}}
+        </div>
+    </div>
+</script>
+
+<!-- 轮播图的模板 结束-->
+
+<!-- 商品列表 开始 -->
+<script type="text/html" id="listTpl">
+  {{each arr item1 index1 }}
+  <div class="goods_item">
+      <!-- 大图片 -->
+      <div class="item_title">
+        <img src="{{item1.group_img}}" alt="">
+      </div>
+      <!-- 小商品 -->
+      <ul class="item_list">   
+        <!-- 二层 循环 -->
+        {{each item1.goods item2 index2}}
+        <li>
+            <!-- 商品详情 -->
+            <a class="goods_detail" href="javascript:;">
+              <!-- 图片 -->
+              <img src="{{item2.goods_small_logo}}" alt="">
+              <!-- 名称 -->
+              <div class="goods_name">{{item2.goods_name}}</div>
+              <!-- 价格 -->
+              <div class="goods_price">￥{{item2.goods_price}}</div>
+            </a>
+            <!-- 商品类似 -->
+            <a class="goods_like mui-btn mui-btn-warning mui-btn-outlined" href="javascript:;">找相似</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/each}}
+  
+ </script>
+<!-- 商品列表 结束 -->
+<!-- 模板引擎 -->
+<script src="./lib/mui/js/mui.js"></script>
+<script src="./lib/arttemplate/template-web.js"></script>
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/index.js"></script>
+
+</html>

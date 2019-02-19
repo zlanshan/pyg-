@@ -1,0 +1,60 @@
+@import "common.less";
+body{
+  line-height: 1;
+}
+
+.pyg_view{
+  display: flex;
+  overflow: hidden;
+  .left_menu{
+    width: .8rem;
+    background-color: #efeff4;
+    overflow: hidden;
+    font-size: .14rem;
+    .left_wrap{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li{
+        height: .40rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .active{
+        background-color: #fff;
+        border-left: 3px solid @bgColor;
+      }
+    }
+  }
+  .right_content{
+    flex: 1;
+    background-color: #fff;
+    overflow: hidden;
+      /* 电视 空调 层级 */
+      .goods_item{
+        font-size: .14rem;
+       /* 标题 */ 
+       .goods_title{
+         color: @bgColor;
+         padding-left:.10rem;
+         height: 0.4rem;
+         line-height: .4rem;
+       }
+       /* 视下面 小电视品牌  */
+       .goods_sm_list{
+         display: flex;
+         flex-wrap: wrap;
+         text-align: center;
+         .brand_item{
+           width: 33.33%;
+           img{
+             width: 90%;
+             margin: 0 auto;
+           }
+           .brand_name{}
+         }
+       }
+      }
+  }
+}
