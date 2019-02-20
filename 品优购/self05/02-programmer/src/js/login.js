@@ -57,24 +57,31 @@ $(function() {
                         // 显示登录成功的信息提示框
                         mui.toast(res.meta.msg);
                         // 登录成功后把用户信息存入到本地存储中
-                        localStorage.setItem("userInfo", JSON.stringify(res.data));
+                        // localStorage.setItem("userInfo", JSON.stringify(res.data));
+                        $.setLogin(res.data);
                         // 获取会话存储中从哪个页面跳过来的url地址
                         // 4.6 获取 会话存储中的来源页面  null 或者 正常的路径
-                        let pageurl = sessionStorage.getItem('pageUrl');
-                        // 需要给用户的登录成功提醒，而不是直接跳转，需等待一下
-                        /*  if (!pageurl) {
-                             location.href = 'index.href'
-                         } else {
-                             location.href = pageurl;
-                         } */
-                        if (!pageurl) {
-                            pageurl = 'index.html';
-                        } else {
+                        // let pageurl = sessionStorage.getItem('pageUrl');
 
+                        // 需要给用户的登录成功提醒，而不是直接跳转，需等待一下
+                        if (!$.getInfo()) {
+                            setTimeout(() => {
+                                location.href = 'index.html'
+                            }, 1000)
+                        } else {
+                            setTimeout(() => {
+                                location.href = $.getInfo();
+                            }, 1000)
                         }
-                        setTimeout(() => {
-                            location.href = pageurl;
-                        }, 1000)
+                        // 下面的代码是一致的
+                        /*  if (!pageurl) {
+                             pageurl = 'index.html';
+                         } else {
+
+                         }
+                         setTimeout(() => {
+                             location.href = pageurl;
+                         }, 1000) */
 
                     }
                 }

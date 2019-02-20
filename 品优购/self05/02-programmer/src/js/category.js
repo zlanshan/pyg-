@@ -84,14 +84,15 @@ $(function() {
     function renderMain() {
         // 判断  存入的数据的格式  {data:[],time:5454545};
         // 获取本地永久存储的数据
-        let localStr = localStorage.getItem('localData');
+        // let localStr = localStorage.getItem('localData');
+        let localObj = $.getCates();
         //  缓存不存在
-        if (!localStr) {
+        if (!localObj) {
             // 缓存不存在就重新发送请求
             getCategory();
         } else {
             // 获取的数据是字符串型的，需先转换成对象的原数据类型
-            let localObj = JSON.parse(localStr);
+            // let localObj = JSON.parse(localStr);
             // 获取的对象数据的属性time的值
             let time = localObj.time;
             // 设置一个数据存储时间的最大值
@@ -133,7 +134,8 @@ $(function() {
                     time: Date.now()
                 };
                 // 设置本地永久存储的设置项
-                localStorage.setItem('localData', JSON.stringify(localObj));
+                // localStorage.setItem('localData', JSON.stringify(localObj));
+                $.setCates(localObj);
                 // 左边的数据渲染
                 renderLeft();
 

@@ -28,6 +28,18 @@ $(function() {
         // console.log(ajaxObj.url);  //http://api.pyg.ak48.xyz/api/public/v1/home/goodslist
         // 启用正在等待图标，，图标样式设置在common.lesszh中
         $('body').addClass('loadding');
+
+        // xhr.setRequestHeader("Authorization", "xxxx");
+        if (ajaxObj.url.indexOf("/my/") != -1) {
+            // 存在这个字段 私有路径 必须要带上token 存放在请求头中。。
+            console.log('当前接口是私有路径', ajaxObj.url);
+            // 调用ajax原生的方法 设置请求头参数
+            xhr.setRequestHeader("Authorization", $.getLogin().token)
+        } else {
+            // 公开路径 不用去管请求头的token
+            console.log('当前接口是公有路径', ajaxObj.url);
+
+        }
     }
 
     // 发送 数据回来之后 会被调用的拦截器
@@ -51,6 +63,44 @@ $(function() {
                 return false;
             } else {
                 return true;
+            }
+        },
+        // 存入 分类数据
+        setCates: function(localObj) {
+            // 存储数据
+            localStorage.setItem('localData', JSON.stringify(localObj));
+        },
+        // 获取本地存储中的分类数据 要么是一个对象 要么就是 null 
+        getCates: function() {
+            // 获取数据，需返回一个数值的
+            let localStr = localStorage.getItem('localData');
+            if (localStr) {
+                let localObj = JSON.parse(localStr);
+                return localObj;
+            } else {
+                return null;
+            }
+        },
+        // 设置当前的页面路径
+        setInfo: function() {
+            sessionStorage.setItem("pageUrl", location.href);
+        },
+        // 获取本地存中的已经存好的页面路径
+        getInfo: function() {
+            let pageurl = sessionStorage.getItem('pageUrl');
+            return pageurl;
+        },
+        setLogin: function(data) {
+            localStorage.setItem("userInfo", JSON.stringify(data));
+
+        },
+        getLogin: function(param) {
+            let userInfo = localStorage.getItem("userInfo");
+            if (userInfo) {
+                let userStr = JSON.parse(userInfo);
+                return userStr;
+            } else {
+                return null;
             }
         }
     })
