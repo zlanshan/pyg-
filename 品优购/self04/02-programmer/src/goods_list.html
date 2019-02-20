@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表</title>
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <link rel="stylesheet" href="./css/goods_list.css">
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css">
+</head>
+
+
+<body>
+    <!-- 头部搜索框 -->
+    <header class='pyg_gl_header'>
+        <h3>搜索</h3>
+        <span><i class='fa fa-search'></i></span>
+    </header>
+
+    <div class="pyg_view">
+        <!-- 为什么这些是动态生成的情况下是没有mui下拉刷新组件？？
+            因为这需要发送请求后结构才能满足mui的上拉组件的结果，
+            但如果这个原始页面结构都不能满足mui的上拉下拉的结果的话
+            就不能调用mui的方法，吟哦动态生成的是无效的 -->
+        <div>
+            <ul class='pyg_gl_view'>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    @@include("footer.html",{"index":1})
+</body>
+
+</html>
+<!-- 模板引擎 -->
+
+<script type='text/html' id='goodslistTp'>
+
+    {{each data item value}}
+    <li>
+        <a href="goods_info.html?goods_id={{item.goods_id}}">
+            <div class="pyg_gl_left">
+                <img src="{{item.goods_small_logo}}" alt="">
+            </div>
+            <div class="pyg_gl_right">
+                <div class='gl_name'>{{item.goods_name}}</div>
+                <div class='gl_price'>￥{{item.goods_price}}</div>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+
+</script>
+
+
+
+
+
+<!-- 这个引入有先后关系的，，最好mui在最前面的 -->
+<script src="./lib/mui/js/mui.js"></script>
+<script src='./lib/arttemplate/template-web.js'></script>
+<!-- <script src='./lib/iscroll/iscroll.js'></script> -->
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src='./js/goods_list.js'></script>

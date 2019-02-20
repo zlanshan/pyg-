@@ -19,7 +19,13 @@ $(function() {
         let url = 'http://api.pyg.ak48.xyz/api/public/v1/';
         ajaxObj.url = url + ajaxObj.url;
         // console.log(ajaxObj.url);  //http://api.pyg.ak48.xyz/api/public/v1/home/goodslist
+        // 启用正在等待图标，，图标样式设置在common.lesszh中
+        $('body').addClass('loadding');
     }
 
+    // 发送 数据回来之后 会被调用的拦截器
+    $.ajaxSettings.complete = function() {
+        $('body').removeClass('loadding');
+    }
 
 })

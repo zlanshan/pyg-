@@ -103,7 +103,7 @@ $(function() {
                 getCategory();
             } else {
                 // 获取的对象数据的属性data的值，在重新渲染下做有变的页面数据
-                Data = localObj.data;
+                Datas = localObj.data;
                 renderLeft();
                 // 右边默认是从0开始的
                 renderRight(0);
