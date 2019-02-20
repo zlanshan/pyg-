@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+
+    <title>品优购</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css
+    ">
+</head>
+
+<body>
+    <!-- 头部搜索框 -->
+    @@include("nav_bar.html",{"pagename":"登录"})
+
+    <div class="pyg_view">
+        <form class="mui-input-group">
+            <div class="mui-input-row">
+                <label>手机</label>
+                <input type="text" name="username" class="mui-input-clear" placeholder="请输入用户名">
+            </div>
+            <div class="mui-input-row">
+                <label>密码</label>
+                <input type="password" name="password" class="mui-input-password" placeholder="请输入密码">
+            </div>
+            <div class="mui-button-row">
+                <a href='register.html' class="pyg_register mui-btn mui-btn-primary mui-btn-outlined">注册</a>
+                <a href='javascript:;' class="pyg_login mui-btn mui-btn-danger">登录</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- 底部 -->
+    <!-- @@include('footer.html',{'index':0}) -->
+    @@include("footer.html")
+    <!-- 单引号与双引号在此有关系吗 有的，，单引号后面修改的时候不能立马呈现，，双引号可以-->
+</body>
+
+<!-- 这个引入有先后关系的，，最好mui在最前面的 -->
+<script src="./lib/mui/js/mui.js"></script>
+<script src='./lib/arttemplate/template-web.js'></script>
+<!-- <script src="./lib/arttemplate/template-web.js"></script> -->
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/login.js"></script>

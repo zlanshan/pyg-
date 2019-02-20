@@ -1,0 +1,74 @@
+@import 'common.less';
+
+.pyg_gl_header{
+    position: absolute;
+    top:0;
+    left: 0;
+    width:100%;
+    height: 45px;
+    // line-height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background: #ff1122;
+    background: @bgColor;
+    color:#fff;
+    text-align: center;
+    h3{
+        margin: 0;
+        padding: 0;
+    }
+    span{
+        position: absolute;
+        top:50%;
+        right:2%;
+        transform: translateY(-50%);
+    }
+}
+
+.pyg_view{
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        li:last-child{
+            border-bottom: none;
+        }
+        li{   
+            border-bottom: 1px solid @bgColor;
+           a{
+            display: flex;
+            .pyg_gl_left{
+                flex:2;
+                img{
+                    width:80%;
+                    margin:0 auto;
+                }
+              }
+              .pyg_gl_right{
+                flex: 4;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                .gl_name{
+                overflow: hidden;
+                text-overflow:ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp:2;
+                -webkit-box-orient: vertical;
+                }
+                .gl_price{
+                    color:@bgColor;
+                }
+              }
+           }
+           
+        }
+        
+    }
+  
+}
