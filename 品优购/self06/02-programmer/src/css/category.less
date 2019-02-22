@@ -1,0 +1,87 @@
+@import 'common.less';
+// 等于自身的高度
+body{
+    line-height: 1;
+  }
+
+.pyg_view{
+    // 伸缩盒子的，若是水平方向的主轴，其高度默认为100%；
+    //  因为是伸缩盒子，就不许是设置定位与内边距的形式布局，直接按照左右两边的宽度及flex值布局  
+    display: flex;
+    overflow: hidden;
+    // height: 100%;
+    // position: relative;
+    // padding-left:100px;
+    
+    .pyg_view_left{
+        // height: 100%;
+        width:1rem;
+        // 这是使用了插件iscroll.js设置的滚动
+        overflow: hidden;
+        font-size: .15rem;
+        // 这是原生的滚动
+        // overflow: scroll;
+        ul{
+            // 清楚ul最初的默认设置
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li{
+                height: .4rem;
+                // 伸缩盒子，都是居中
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .active{
+                color:@bgColor;
+                background: #fff;
+                border-left:.02rem solid @bgColor;
+            }
+        }
+        
+    }
+    .pyg_view_right{
+        flex:1;
+        padding:.05rem;
+        font-size: .14rem;
+        // display: flex;
+        // flex-wrap: wrap;
+        // 这是使用了插件iscroll.js设置的滚动
+        overflow: hidden;
+        // 这是原生的滚动
+        // overflow: scroll;
+        // 必须设置高度
+        // height: 100%;
+        background: #fff;
+        .right_title{
+            // width:100%;
+            margin-left:.1rem;
+            // padding: 5px 0;
+            color: @bgColor;
+            height: .4rem;
+            line-height: .4rem;
+        }
+        .right_content{
+           
+            width:100%;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            a{
+               width:33.33%;
+                // text-align: center;
+                img{
+                    width:80%;
+                    
+                    margin:0 auto;
+                }
+                .title_small{
+                  padding:.1rem 0;
+                }
+            }
+           
+         
+        }
+    }
+}

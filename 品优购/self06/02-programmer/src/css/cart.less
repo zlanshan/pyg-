@@ -1,0 +1,160 @@
+@import "common.less";
+
+.pyg_view{
+    padding:0 10px;
+}
+
+.address{
+    margin-top:10px;
+    .address_title{
+        font-size: 13px;
+        color:#888;
+    }
+    .address_content{
+        background: #fff;
+        display: flex;
+
+        .address_con_left{
+            flex:1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        .address_con_right{
+            flex:5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding:5px;
+            .default{
+                margin-bottom: 5px;
+                font-size: 15px;
+                color:#000;
+            }
+            .addressinfo{
+                font-size: 13px;
+                color:#555;
+            }
+        }
+    }
+}
+
+.totalPrice{
+    margin-top:20px;
+    .totalPrice_title{
+        font-size: 13px;
+        color:#888;
+    }
+    .totalPrice_content{
+        padding: 10px;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        .totalPrice_con_left{
+            flex:1;
+            span{
+                font-size: 17px;
+                i{
+                   
+                    color: @bgColor;
+                    font-style: normal;
+                }
+            }
+
+        }
+        .totalPrice_con_right{
+            flex:1;
+            text-align: right;
+            font-size: 14px;
+        }
+    }
+}
+.order{
+    margin-top:20px;
+}
+.order_title{
+color:#888;
+font-size: 13px;
+}
+.order_list{
+    background: #fff;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+        display: flex;
+        // height:120px;
+        .order_checked{
+            flex:1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           .chk_inp{
+            //    为什么加上这个，.mui-checkbox 中添加了样式绝对定位脱标，在这改为静态的占位
+            position: static;
+           }
+           
+        }
+        .order_list_img{
+            // ??改为flex：2时为什么只能有两行的不行呢
+            flex:1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width:90%;
+                // margin:0 auto;
+            }
+             
+        }
+        .order_list_info{
+            flex:3;
+            overflow:hidden;
+            .order_goods_name{
+                padding:10px;
+                font-size: 15px;
+                color:#666;
+                text-overflow: ellipsis;
+            
+                // white-space: nowrap;
+                display: -webkit-box;
+                -webkit-line-clamp:2;
+                -webkit-box-orient: vertical;
+                white-space: normal !important;
+                word-wrap:  break-word;
+                overflow: hidden;
+            }
+            .goods_num_tool{
+                margin-left:10px;
+            }
+           
+            .order_goods_price{
+                margin-top: 10px;
+                margin-left:5px;
+                font-size: 18px;
+            }
+
+        }
+    }
+   
+}
+
+body{
+    display: none;
+}
+#pyg_body{
+    .del_btn,.order_checked,.goods_num_tool{
+        display: none;
+    }
+}
+// #pyg_body .body_status中间不能加空格  空格是后代选择器
+// #pyg_body.body_status是交集选择器还是？？
+#pyg_body.body_status{
+    .del_btn,.goods_num_tool{
+        display: block;
+    }
+    .order_checked{
+        display: flex;
+    }
+}

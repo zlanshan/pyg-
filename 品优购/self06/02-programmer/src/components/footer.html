@@ -1,0 +1,21 @@
+<footer class='pyg_footer'>
+    <!-- @if(context.index==1) class="active"直接这种的话相当于添加类名active，与前面定义的条件没有联系的 -->
+    <a href="index.html" @@if(context.index==0) {class="active" }>
+        <i class="fa fa-home"></i>
+        <div class='page_name'>首页</div>
+    </a>
+    <a href="category.html" @@if(context.index==1) {class="active" }>
+        <span class='fa fa-list-ul'></span>
+        <div class='page_name'>分类</div>
+    </a>
+    <!--  @@if(context.index==2) {class="active" } -->
+    <a href="cart.html">
+        <i class='fa fa-shopping-cart'></i>
+        <div class='page_name'>购物车</div>
+    </a>
+    <!--  @@if(context.index==3) {class="active" } -->
+    <a href="javascript:;">
+        <span class='fa fa-user-circle-o'></span>
+        <div class='page_name'>我的</div>
+    </a>
+</footer>

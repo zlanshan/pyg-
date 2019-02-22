@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+
+    <title>品优购</title>
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css
+    ">
+</head>
+
+<body id='pyg_body'>
+    <!-- 头部搜索框 -->
+    <!-- @@include('header.html') -->
+    <header id="header" class="mui-bar mui-bar-nav">
+
+        <h1 class="mui-title">购物车</h1>
+        <!-- mui-action-back mui.js $.back()做返回页面的 -->
+        <button class="del_btn  mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left"> 删除</button>
+        <button class="edit_btn mui-btn mui-btn-blue mui-btn-link mui-pull-right">编辑</button>
+    </header>
+    <div class="pyg_view">
+        <!-- 配送地址开始 -->
+        <div class="address">
+            <div class="address_title">
+                配送地址
+            </div>
+            <div class="address_content">
+                <div class="address_con_left">
+                    <i class='fa fa-map-marker'></i>
+                </div>
+                <div class="address_con_right">
+                    <div class="default">
+                        默认地址
+                    </div>
+                    <div class="addressinfo">中国台湾钓鱼岛</div>
+                </div>
+            </div>
+        </div>
+        <!-- 配送地址结束 -->
+
+        <!--总价开始 -->
+        <div class="totalPrice">
+            <div class="totalPrice_title">
+                总价
+            </div>
+            <div class="totalPrice_content">
+                <div class="totalPrice_con_left">
+                    <span>总价：<i class='pyg_total_price'>￥1639</i></span>
+                </div>
+                <a href="#" class="totalPrice_con_right">生成订单</a>
+
+            </div>
+
+
+        </div>
+        <!--总价结束 -->
+
+        <!-- 订单开始 -->
+        <div class="order">
+            <div class="order_title">订单</div>
+            <ul class="order_list">
+
+            </ul>
+        </div>
+        <!-- 订单结束 -->
+    </div>
+
+    <!-- 底部 -->
+    <!-- @@include('footer.html',{'index':0}) -->
+    @@include("footer.html",{"index":2})
+    <!-- 单引号与双引号在此有关系吗 有的，，单引号后面修改的时候不能立马呈现，，双引号可以-->
+</body>
+
+</html>
+
+<script type='text/html' id='orderTp'>
+    {{each obj value index}}
+    <li class='cart_item' data-obj="{{value}}">
+        <div class="order_checked">
+            <div class="mui-input-row mui-checkbox">
+                <input name="checkbox1" value="Item 1" type="checkbox" class='chk_inp'>
+            </div>
+        </div>
+
+        <div class="order_list_img">
+            <img src="{{value.goods_small_logo}}" alt="">
+        </div>
+        <div class="order_list_info">
+            <div class="order_goods_name">{{value.goods_name}}</div>
+            <!-- 数字输入框按钮 -->
+            <!-- 可通过data-numbox*自定义属性设置数字输入框的参数，如下： Data API 属性名 作用 data-numbox-min 输入框允许使用的最小值，默认无限制 data-numbox-max 输入框允许使用的最大值，默认无限制 data-numbox-step 每次点击“+”、“-”按钮变化的步长，默认步长为1 示例：设置取值范围为0~100，每次变化步长为10，则代码如下 -->
+            <div class="goods_num_tool">
+                <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{value.goods_number}}'>
+                    <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                    <input class="mui-numbox-input" type="number" value="{{value.amount}}" />
+                    <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                </div>
+            </div>
+
+            <div class="order_goods_price">
+                ￥ {{value.goods_price}}
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+
+<!-- 这个引入有先后关系的，，最好mui在最前面的 -->
+<script src="./lib/mui/js/mui.js"></script>
+<script src='./lib/arttemplate/template-web.js'></script>
+<!-- <script src="./lib/arttemplate/template-web.js"></script> -->
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/cart.js"></script>
