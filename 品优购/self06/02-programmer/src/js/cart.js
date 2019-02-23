@@ -90,6 +90,17 @@ $(function() {
                 })
             }
         })
+
+        // 生成订单
+        $('.totalPrice_con_right').on('tap', function() {
+            if ($('.cart_item').length === 0) {
+                mui.toast('请先添加商品，再生成订单');
+                return;
+            } else {
+                // mui.toast('生成订单成功')
+                createOrder();
+            }
+        })
     }
 
 
@@ -161,6 +172,56 @@ $(function() {
             })
             // }
     }
+
+    // 生成订单
+    function createOrder() {
+        let params = {
+            // 订单价格
+            "order_price": $('.pyg_total_price').text(),
+            // 订单地址
+            "consignee_addr": '广东省广州市天河区',
+            // 存放的商品列表
+            "goods": [
+                //     {
+                //     "goods_id": '',
+                //     "goods_number": '',
+                //     "goods_price": ''
+                // }
+            ]
+        }
+
+
+        let lis = $('.cart_item');
+        for (var i = 0; i < lis.length; i++) {
+            let li = lis[i];
+            let tmpObj = $(li).data('obj');
+            let goods_number = $(li).find('.mui-numbox-input').val();
+            let goods_id = tmpObj.goods_id;
+            let goods_price = tmpObj.goods_price;
+            let obj = {
+                goods_id,
+                goods_number,
+                goods_price
+            }
+            params.goods.push(obj);
+
+        }
+
+
+        $.post('my/orders/create', params, function(res) {
+            if (res.meta.status === 200) {
+                // console.log(res);
+                // 能生成订单
+                mui.toast('生成订单成功');
+                location.href = 'order.html';
+            }
+        })
+
+
+
+
+    }
+
 
     // 编辑按钮事件
     function editCart() {

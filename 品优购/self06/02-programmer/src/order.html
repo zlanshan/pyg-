@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+
+    <title>品优购</title>
+    <link rel="stylesheet" href="./css/order.css">
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.css
+    ">
+</head>
+
+<body id='pyg_body'>
+    <!-- 头部搜索框 -->
+    <!-- @@include('header.html') -->
+    <header id="header" class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">订单</h1>
+    </header>
+    <div class="pyg_view">
+        <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+            <a class="mui-control-item mui-active" href="#item1mobile"> 全部</a>
+            <a class="mui-control-item" href="#item2mobile">待付款 </a>
+            <a class="mui-control-item" href="#item3mobile">待发货</a>
+        </div>
+        <div>
+            <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+                <!-- mui-table-view  mui-table-view-cell -->
+                <ul class='order_num'>
+                    <!-- <li>
+                        <div class="order_num_left">
+                            <div class="order_title">订单编号</div>
+                            <div class="order_info">Gd134</div>
+                        </div>
+                        <div class="order_num_right">
+                            ￥134
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+
+            <div id="item2mobile" class="mui-slider-item mui-control-content">
+                2
+            </div>
+            <div id="item3mobile" class="mui-slider-item mui-control-content">
+                3
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- 底部 -->
+    <!-- @@include('footer.html',{'index':0}) -->
+    @@include("footer.html")
+    <!-- 单引号与双引号在此有关系吗 有的，，单引号后面修改的时候不能立马呈现，，双引号可以-->
+</body>
+
+</html>
+
+
+
+<!-- 这个引入有先后关系的，，最好mui在最前面的 -->
+<script src="./lib/mui/js/mui.js"></script>
+<script src='./lib/arttemplate/template-web.js'></script>
+<!-- <script src="./lib/arttemplate/template-web.js"></script> -->
+<script src="./lib/zepto/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/order.js"></script>
